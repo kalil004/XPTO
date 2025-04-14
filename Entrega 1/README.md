@@ -9,15 +9,6 @@ Este repositório documenta o processo de criação de um ambiente com balanceam
 
 ---
 
-## ✅ Pré-requisitos
-
-- Conta AWS ativa
-- Par de chaves para acesso via SSH
-- Conhecimentos básicos de terminal/Linux
-- Acesso root ou `sudo` nas instâncias
-
----
-
 ## 🛠️ Passo a Passo
 
 ### 1. Criar 4 instâncias EC2 Ubuntu
@@ -89,7 +80,7 @@ Substitua o conteúdo pelo seguinte:
 
 ```nginx
 upstream backends {
-    server 54.82.70.202;
+    server 54.82.70.202; # Altere pelos IPS privados das suas instâncias
     server 3.82.199.128;
     server 54.226.6.101;
 }
@@ -115,30 +106,17 @@ sudo systemctl restart nginx
 
 Para facilitar o acesso via nomes personalizados, edite o arquivo `hosts` no seu computador:
 
-#### Linux/macOS:
 ```bash
 sudo nano /etc/hosts
-```
-
-#### Windows:
-Abra o Bloco de Notas como administrador e edite:
-```
-C:\Windows\System32\drivers\etc\hosts
 ```
 
 Adicione as linhas:
 
 ```plaintext
-54.82.70.202      xpto-1.local
-3.82.199.128      xpto-2.local
-54.226.6.101      xpto-3.local
-54.167.12.188     xpto-balancer.local
-```
-
-Agora você pode acessar via:
-
-```bash
-http://xpto-balancer.local
+54.82.70.202      xpto-1 # Altere pelos IPS públicos das suas instâncias
+3.82.199.128      xpto-2
+54.226.6.101      xpto-3
+54.167.12.188     xpto-balancer
 ```
 
 ---
@@ -152,12 +130,7 @@ Atualize a página várias vezes e observe que o conteúdo muda entre `XPTO-1`, 
 
 ## 📦 Extras
 
-- Você pode customizar o HTML de cada instância em `/var/www/html/index.html`.
-- Para IPs fixos, associe Elastic IPs no painel AWS.
+- Você pode customizar o HTML de cada instância utlizando `sudo nano /var/www/html/index.html`.
+
 
 ---
-
-## 🧾 Créditos
-
-Feito com 💻 por [Seu Nome]  
-Baseado na arquitetura do repositório [`InfraRedeXPTO`](https://github.com/Sandro-Pimentel/InfraRedeXPTO/tree/SPRINT-1)
