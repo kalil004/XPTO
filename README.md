@@ -25,7 +25,7 @@
 - [x] Criar e configurar instâncias EC2 com Ubuntu
 - [x] Configurar NGINX nas instâncias backend
 - [x] Criar um Load Balancer com NGINX apontando para os backends
-- [ ] Configurar VPN para acesso seguro ao ambiente (Sprint 2)
+- [X] Configurar VPN para acesso seguro ao ambiente (Sprint 2)
 - [ ] Containerizar banco de dados com Docker + MongoDB (Sprint 3)
 
 ---
@@ -33,6 +33,7 @@
 ## 📌 Status Atual
 
 ✅ **Sprint 1 finalizada**: Load Balancer ativo com 3 servidores backend funcionando e HTML customizado.  
-🔄 **Sprint 2 em andamento**: Implementação da VPN e segurança da rede.
+✅ **Sprint 2 em andamento**: VPN implementada com segurança de rede.
+🔄 **Sprint 3 em andamento**: Container docker com banco de dados em MongoDB.
 
 ---
