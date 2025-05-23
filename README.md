@@ -32,8 +32,10 @@
 
 ## 📌 Status Atual
 
-✅ **Sprint 1 finalizada**: Load Balancer ativo com 3 servidores backend funcionando e HTML customizado.  
+✅ **Sprint 1 finalizada**: Load Balancer ativo com 3 servidores backend funcionando e HTML customizado. 
+
 ✅ **Sprint 2 em andamento**: VPN implementada com segurança de rede.
+
 🔄 **Sprint 3 em andamento**: Container docker com banco de dados em MongoDB.
 
 ---
