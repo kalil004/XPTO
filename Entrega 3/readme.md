@@ -1,6 +1,4 @@
-Perfeito! Seguindo o modelo que você enviou, aqui vai um README documentando o processo de criação e execução do CRUD com MongoDB e Node.js na AWS:
 
----
 
 # 🌐 CRUD com Node.js + MongoDB na AWS – Projeto XPTO
 
