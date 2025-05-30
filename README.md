@@ -26,7 +26,7 @@
 - [x] Configurar NGINX nas instâncias backend
 - [x] Criar um Load Balancer com NGINX apontando para os backends
 - [X] Configurar VPN para acesso seguro ao ambiente (Sprint 2)
-- [ ] Containerizar banco de dados com Docker + MongoDB (Sprint 3)
+- [X] Containerizar banco de dados com Docker + MongoDB (Sprint 3)
 
 ---
 
