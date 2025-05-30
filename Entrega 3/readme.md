@@ -1,8 +1,6 @@
-
-
 # 🌐 CRUD com Node.js + MongoDB na AWS – Projeto XPTO
 
-Este repositório documenta como configurar e executar uma aplicação CRUD utilizando **Node.js**, **Express**, **MongoDB** e um **frontend HTML** simples, tudo hospedado em uma instância **EC2 Ubuntu na AWS**.
+Este repositório documenta como configurar e executar uma aplicação CRUD utilizando **Node.js**, **Express**, **MongoDB** e um **frontend HTML simples**, tudo hospedado em uma instância **EC2 Ubuntu na AWS**.
 
 ---
 
@@ -19,7 +17,7 @@ No console da AWS:
   * Porta `22` (SSH) – Acesso remoto
   * Porta `3000` (HTTP API – Backend)
   * Porta `27017` (MongoDB) – Acesso interno (opcional)
-  * Porta `80` (HTTP – Frontend, opcional se usar nginx)
+  * Porta `80` (HTTP – Frontend, se usar NGINX)
 
 > ⚠️ **Garanta que a instância possui um IP público ou Elastic IP.**
 
@@ -136,30 +134,56 @@ node index.js
 
 ---
 
-### 6. Frontend – Página HTML
+## 🎨 Frontend – Como deve ser estruturado
 
-Crie um arquivo chamado `index.html`:
+### ✅ O que é necessário para o frontend funcionar:
 
-```bash
-nano index.html
+* Um arquivo `index.html` simples, que faz requisições à API na porta `3000` da instância.
+* O frontend faz chamadas REST para os endpoints:
+
+  * `GET /items` – Listar itens
+  * `POST /items` – Adicionar itens
+  * `PUT /items/:id` – Atualizar itens
+  * `DELETE /items/:id` – Deletar itens
+
+### ✅ Estrutura mínima do frontend:
+
+* Um formulário para adicionar itens (campos de nome e descrição).
+* Uma listagem dinâmica que:
+
+  * Mostra os itens cadastrados.
+  * Permite editar e excluir.
+* Toda interação com o backend acontece usando **fetch API** ou similar, via JavaScript.
+
+### ✅ Exemplo de como configurar o frontend para apontar para a API:
+
+```javascript
+const apiUrl = 'http://IP_DA_INSTANCIA:3000/items';
 ```
 
-Cole o conteúdo do frontend (aquele HTML com CSS melhorado que fizemos anteriormente).
+> 🔥 **Importante:** Substituir `IP_DA_INSTANCIA` pelo IP público da sua instância.
 
 ---
 
-### 7. Servir o Frontend
+### 🚀 Como servir o frontend:
 
-Opção 1 – Usar o `serve` (Node.js):
+#### Opção 1 – Usar `serve` (rápido e simples):
+
+Instale o `serve` globalmente:
 
 ```bash
 npm install -g serve
+```
+
+Suba o frontend:
+
+```bash
 serve .
 ```
 
-Por padrão vai subir na porta `3000` (ou outra disponível).
+Por padrão vai rodar na porta `3000` (ou a próxima disponível, se estiver ocupada).
 
-Opção 2 – Usar NGINX (Recomendado para produção):
+#### Opção 2 – Usar NGINX (recomendado para produção):
 
 ```bash
 sudo apt install nginx
@@ -167,7 +191,11 @@ sudo mv index.html /var/www/html/index.html
 sudo systemctl restart nginx
 ```
 
-Acesse via navegador: `http://IP_DA_INSTANCIA`
+Acesse no navegador:
+
+```
+http://IP_DA_INSTANCIA
+```
 
 ---
 
@@ -188,14 +216,14 @@ cd ~/crud-mongo
 node index.js
 ```
 
-* Rode o frontend (se usar serve):
+* Rode o frontend (se usar `serve`):
 
 ```bash
 cd ~/crud-mongo
 serve .
 ```
 
-Ou, se estiver usando NGINX, ele sobe automaticamente com o sistema.
+Se estiver usando NGINX, ele sobe automaticamente com o sistema.
 
 ---
 
@@ -207,11 +235,11 @@ Ou, se estiver usando NGINX, ele sobe automaticamente com o sistema.
 http://IP_DA_INSTANCIA
 ```
 
-2. Insira itens no formulário.
+2. Use o formulário para criar itens.
 
-3. Verifique se consegue editar e excluir itens.
+3. Edite e exclua itens diretamente pela interface.
 
-4. API REST também disponível diretamente:
+4. Se quiser testar direto na API:
 
 * Listar itens:
 
@@ -227,18 +255,6 @@ POST http://IP_DA_INSTANCIA:3000/items
 
 ---
 
-## 🚀 Estrutura da aplicação
-
-* **MongoDB** rodando em container Docker
-* **Node.js + Express** rodando na própria instância EC2
-* **Frontend HTML/CSS/JS** servido via `serve` ou `nginx`
-
----
-
 ## ✅ Conclusão
 
-Esse projeto demonstra como subir uma aplicação completa (frontend + backend + banco de dados) em uma única instância EC2 na AWS, utilizando tecnologias simples e eficientes como Docker, Node.js, MongoDB e NGINX.
-
----
-
-Se quiser, posso gerar o arquivo `README.md` pronto pra você baixar. Quer? 🔥
+Esse projeto demonstra como rodar uma aplicação completa — **banco de dados (MongoDB)**, **backend (Node.js + Express)** e **frontend (HTML + JS)** — em uma única instância EC2 na AWS.
